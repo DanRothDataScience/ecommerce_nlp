@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Find My Product</title>
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='stylesheets/index.css') }}">
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+  </head>
+
+  <body>
+    <a name="top"></a>
+    <div class="title">
+      <img src="/static/img/logo.jpg" class="image_title">
+    </div>
+
+    <div class="form">
+      <form action="/" method='POST'>
+        {% if last_search %}
+          <input class="form_text" type="text" name="search"
+            value="{{ last_search }}"
+            placeholder="Search for drinks or flavors...">
+        {% else %}
+          <input class="form_text" type="text" name="search"
+            placeholder="Search for drinks or flavors...">
+        {% endif %}
+        <input type="submit" method="get" style="display:none">
+      </form>
+    </div>
+
+    <div class="results">
+      {% if recos %}
+        <table class="table">
+        {% for reco in recos %}
+          <tr class="table_row">
+            <th class="table_name">
+              <div class="div_name">
+                <a href="{{ reco.product_link }}" target="_blank" class="link_name">
+                  {{ reco.product_title }}
+                </a>
+              </div>
+            </th>
+            <th class="table_image">
+              <a href="{{ reco.product_link }}" target="_blank">
+                <img src="{{ reco.product_image }}" class="reco_image">
+              </a>
+            </th>
+            <th class="table_ingredient">
+              <ul>
+                  <li>{{ reco.source }}</li>
+              </ul>
+            </th>
+          </tr>
+        {% endfor %}
+        </table>
+
+        <hr>
+
+        <a href="#top" class="link_back">Back to Top</a>
+      {% else %}
+        {% if last_search %}
+          <p class="failure">Sorry, I couldn't find anything with those search
+            terms</p>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <div class="footer">
+      <p>
+        App functionality and design by Dan Roth:
+        <a href="danrothdatascience.github.io" target="_blank">Blog</a> |
+        <a href="https://www.linkedin.com/in/lukaswadya/" target="_blank">
+          LinkedIn
+        </a> |
+        <a href="https://github.com/lwadya" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </body>
+
+</html>
