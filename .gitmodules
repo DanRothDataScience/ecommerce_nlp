@@ -1,0 +1,3 @@
+[submodule "SeaNMF"]
+	path = SeaNMF
+	url = https://github.com/tshi04/SeaNMF.git

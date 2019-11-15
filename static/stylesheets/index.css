@@ -1,3 +1,4 @@
+
 body {
   text-align: center;
   margin: auto;
@@ -53,7 +54,9 @@ body {
 }*/
 
 .table_row {
-  border: .07em solid #000;
+  display: inline-table;
+  /*margin-top: 0.5px;
+  border: 1px solid #000;*/
 }
 
 .table_name {

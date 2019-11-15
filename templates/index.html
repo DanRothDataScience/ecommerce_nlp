@@ -33,23 +33,23 @@
         <table class="table">
         {% for reco in recos %}
           <tr class="table_row">
-            <th class="table_name">
+            <td class="table_name">
               <div class="div_name">
                 <a href="{{ reco.product_link }}" target="_blank" class="link_name">
                   {{ reco.product_title }}
                 </a>
               </div>
-            </th>
-            <th class="table_image">
+            </td>
+            <td class="table_image">
               <a href="{{ reco.product_link }}" target="_blank">
                 <img src="{{ reco.product_image }}" class="reco_image">
               </a>
-            </th>
-            <th class="table_ingredient">
+            </td>
+            <td class="table_ingredient">
               <ul>
                   <li>{{ reco.source }}</li>
               </ul>
-            </th>
+            </td>
           </tr>
         {% endfor %}
         </table>

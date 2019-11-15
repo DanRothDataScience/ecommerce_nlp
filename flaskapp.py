@@ -18,9 +18,15 @@ with open("data/product_df.pkl", 'rb') as openfile:
 
 def find_item(search):
     topic = int(search)
+    sort = 'topic' + search
     select = products[products.topic_label == topic].dropna()
-    out = select.iloc[np.argsort(select[topic])[-3:].values]
-    status=True
+    try:
+        select['topic_ratio'] = select[sort] / select.score_sum
+        out = select.sort_values('topic_ratio', ascending=False)[:3]
+        status=True
+    except:
+        out = 0
+        status = False
     return out, status
 
 
