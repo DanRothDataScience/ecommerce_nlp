@@ -17,8 +17,22 @@ with open("data/product_df.pkl", 'rb') as openfile:
 
 
 def find_item(search):
-    topic = int(search)
-    sort = 'topic' + search
+    query = {'packers': 1,
+             'coffee grinder': 3,
+             'laptop case': 4,
+             'lego': 12,
+             'playstation': 13,
+             'perfume': 14,
+             'yoga pants': 22,
+             'bedding': 30,
+             'dresses': 31,
+             'furniture': 32,
+             'sports bra': 33}
+    try:
+        topic = int(search)
+    except:
+        topic = query[search]
+    sort = 'topic' + str(topic)
     select = products[products.topic_label == topic].dropna()
     try:
         select['topic_ratio'] = select[sort] / select.score_sum
